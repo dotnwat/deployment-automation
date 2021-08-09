@@ -27,3 +27,22 @@
       path: /var/lib/redpanda/data
       owner: redpanda
       group: redpanda
+
+  - name: Mount and bind a volume
+    ansible.posix.mount:
+      path: /var/lib/systemd/coredump
+      src: /var/lib/redpanda/coredump
+      opts: bind
+      state: mounted
+      fstype: none
+
+  - name: Configure systemd-coredump
+    template:
+      src: coredump.conf.j2
+      dest: /etc/systemd/coredump.conf
+      mode: 0644
+      owner: root
+      group: root
+
+  - name: Reload systemd
+    command: systemctl daemon-reload

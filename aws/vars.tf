@@ -16,12 +16,12 @@ variable "distro" {
 
 variable "instance_type" {
   description = "Default redpanda instance type to create"
-  default     = "i3.2xlarge"
+  default     = "i3.8xlarge"
 }
 
 variable "prometheus_instance_type" {
   description = "Instant type of the prometheus/grafana node"
-  default     = "c5.2xlarge"
+  default     = "c5.12xlarge"
 }
 
 variable "enable_monitoring" {

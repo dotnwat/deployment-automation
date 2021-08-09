@@ -24,7 +24,7 @@ resource "aws_instance" "redpanda" {
 }
 
 resource "aws_instance" "prometheus" {
-  count                  = var.enable_monitoring ? 1 : 0
+  count                  = var.enable_monitoring ? 3 : 0
   ami                    = var.distro_ami[var.distro]
   instance_type          = var.prometheus_instance_type
   key_name               = aws_key_pair.ssh.key_name
@@ -122,8 +122,8 @@ resource "local_file" "hosts_ini" {
     {
       redpanda_public_ips   = aws_instance.redpanda.*.public_ip
       redpanda_private_ips  = aws_instance.redpanda.*.private_ip
-      monitor_public_ip  = var.enable_monitoring ? aws_instance.prometheus[0].public_ip : ""
-      monitor_private_ip = var.enable_monitoring ? aws_instance.prometheus[0].private_ip : ""
+      monitor_public_ips  = aws_instance.prometheus.*.public_ip
+      monitor_private_ips = aws_instance.prometheus.*.private_ip
       ssh_user              = var.distro_ssh_user[var.distro]
       enable_monitoring     = var.enable_monitoring
     }

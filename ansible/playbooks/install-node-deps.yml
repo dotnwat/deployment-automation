@@ -49,6 +49,7 @@
         - mdadm
         - openjdk-11-jdk-headless
         - xfsprogs
+        - systemd-coredump
       state: present
       update_cache: yes
     when: ansible_os_family == 'Debian'

@@ -1,3 +1,10 @@
+Fix for core dump
+```
+fix timeout here by setting 5min to 1hr
+sudo vim /lib/systemd/system/systemd-coredump@.service
+sudo systemctl daemon-reload 
+```
+
 # Terraform and Ansible Deployment for Redpanda
 
 Terraform and Ansible Scripts to easily provision a [Redpanda](https://vectorized.io)
