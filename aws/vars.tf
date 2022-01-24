@@ -71,6 +71,8 @@ variable "distro_ami" {
     # https://us-west-2.console.aws.amazon.com/ec2/v2/home?region=us-west-2#LaunchInstanceWizard:
     "rhel-8"         = "ami-087c2c50437d0b80d"
     "amazon-linux-2" = "ami-01ce4793a2f45922e"
+
+    "redpanda-testing" = "ami-0db548fce9d861ecd"
   }
 }
 
@@ -87,5 +89,6 @@ variable "distro_ssh_user" {
     "ubuntu-hirsute" = "ubuntu"
     "rhel-8"         = "ec2-user"
     "amazon-linux-2" = "ec2-user"
+    "redpanda-testing" = "ubuntu"
   }
 }
